@@ -31,7 +31,8 @@ recv(void *arg, char *pdata, unsigned short len) {
 
   Response *response = route_request(&request);
 
-  static char status_line[32], content_type[64], head[256], response_data[512]; // probs needs protections, innit
+  // I think only response_data needs to be static
+  static char status_line[32], content_type[64], head[256], response_data[1024]; // probs needs protections, innit
 
   os_sprintf(content_type, CONTENT_TYPE_FMT,
 	     response->content_type);
